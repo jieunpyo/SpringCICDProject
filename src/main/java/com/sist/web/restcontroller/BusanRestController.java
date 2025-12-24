@@ -19,8 +19,8 @@ public class BusanRestController {
    
    @GetMapping("/busan/list_vue/")
    public ResponseEntity<Map> busan_list(
-		 @RequestParam(name="type",required = false) String type,
-		 @RequestParam("page") int page
+		@RequestParam(name="type",required = false) String type,
+		@RequestParam("page") int page
    )
    {
 	   if(type==null)
@@ -28,31 +28,54 @@ public class BusanRestController {
 	   Map map=new HashMap();
 	   try
 	   {
-		   map.put("type", type);
+		   map.put("type",type);
 		   map.put("start", (page-1)*6);
 		   
 		   List<BusanVO> list=bService.busanListData(map);
 		   int totalpage=bService.busanTotalPage(map);
 		   
 		   final int BLOCK=10;
-		   int startPage=((page-1)/BLOCK*BLOCK)+1;
-		   int endPage=((page-1)/BLOCK*BLOCK)+BLOCK;
-			
-		   if(endPage>totalpage)
-				endPage=totalpage;
-			
-			// 출력에 필요한 데이터를 Vue로 전송 
-			map=new HashMap();
-			map.put("list", list);
-			map.put("curpage", page);
-			map.put("totalpage", totalpage);
-			map.put("startPage", startPage);
-			map.put("endPage", endPage);
-			map.put("type", type);
+   		   int startPage=((page-1)/BLOCK*BLOCK)+1;
+   		   int endPage=((page-1)/BLOCK*BLOCK)+BLOCK;
+   		
+   		   if(endPage>totalpage)
+   			  endPage=totalpage;
+   		
+   		    // 출력에 필요한 데이터를 Vue로 전송 
+	   		map=new HashMap();
+	   		map.put("list", list);
+	   		map.put("curpage", page);
+	   		map.put("totalpage", totalpage);
+	   		map.put("startPage", startPage);
+	   		map.put("endPage", endPage);
+	   		map.put("type", type);
 	   }catch(Exception ex)
 	   {
+		   ex.printStackTrace();
 		   return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
 	   }
 	   return new ResponseEntity<>(map,HttpStatus.OK);
    }
+   @GetMapping("/busan/detail_vue/")
+   public ResponseEntity<Map> busan_detail(
+	 @RequestParam("no") int no
+   )
+   {
+	   Map map=new HashMap();
+	   try
+	   {
+		   BusanVO vo=bService.busanDetailData(no);
+		   map.put("vo", vo);
+		   String[] datas=vo.getAddress().split(" ");
+		   // 주변 맛집 
+		   List<FoodVO> list=bService.foodNearData4(datas[2]);
+		   map.put("list", list);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+		   return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+	   }
+	   return new ResponseEntity<>(map,HttpStatus.OK);
+   }
+   
 }

@@ -11,7 +11,7 @@ public class BusanController {
 		  "","명소","문화시설","축제","숙박","쇼핑","음식점"
   };
   @GetMapping("/busan")
-  // => 리턴형 : String:화면 이동 , void:다운로드 , Ajax ...
+  // => 리턴형 : String:화면 이동 , void:다운로드 , Ajax ... 
   public String busan_list(@RequestParam(name="type",required = false) String type,Model model)
   {
 	  if(type==null)
@@ -19,6 +19,12 @@ public class BusanController {
 	  model.addAttribute("title", title[Integer.parseInt(type)]);
 	  model.addAttribute("busan_jsp", "../busan/busan_list.jsp");
 	  model.addAttribute("main_jsp", "../busan/busan_main.jsp");
+	  return "main/main";
+  }
+  @GetMapping("/busan/detail")
+  public String busan_detail(Model model)
+  {
+	  model.addAttribute("main_jsp", "../busan/detail.jsp");
 	  return "main/main";
   }
 }

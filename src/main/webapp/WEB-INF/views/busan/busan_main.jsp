@@ -21,7 +21,7 @@
             </div>
         </div>
     </section>
-    <section class="blog spad">
+     <section class="blog spad">
         <div class="container">
             <div class="row">
               <jsp:include page="../busan/busan_left.jsp"></jsp:include>

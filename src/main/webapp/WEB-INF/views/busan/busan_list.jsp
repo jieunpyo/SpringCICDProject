@@ -23,7 +23,7 @@
                                     </ul>
                                     <h5><a href="#">{{vo.title}}</a></h5>
                                     <p>{{vo.address}} </p>
-                                    <a href="#" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
+                                    <a :href="'/busan/detail?no='+vo.no" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
                                 </div>
                             </div>
                         </div>
@@ -50,11 +50,11 @@
     		       const type=params.get('type')
     		       
         		   // 한번 실행  /busan  /busan?type=1
-      			    Vue.onMounted(()=>{
-        			   
-      			     store.busanListData(!params.has('type')?1:type)
-      			  
-      		        })
+        		    Vue.onMounted(()=>{
+          			   
+        			     store.busanListData(!params.has('type')?1:type)
+        			  
+        		     })
         		 /* if(!params.has('type'))
         		 {
         			 
