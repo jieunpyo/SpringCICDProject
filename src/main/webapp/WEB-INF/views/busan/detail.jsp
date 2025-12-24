@@ -31,7 +31,7 @@
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
                             <img class="product__details__pic__item--large"
-                                :src="store.detail.vo.poster" style="width: 100%;height: 350px">
+                                :src="store.detail.vo.image1" style="width: 100%;height: 350px">
                         </div>
                         
                     </div>
@@ -48,7 +48,7 @@
                             <span>(18 reviews)</span>
                         </div>
                         
-                        <p>{{store.detail.vo.msg}}</p>
+                        <p>{{store.detail.vo.title}}</p>
                         
                         
                         <ul>
@@ -82,7 +82,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6" v-for="fvo in store.detail.list">
                     <div class="product__item">
                         <div class="product__item__pic">
-                          <img :src="fvo.poster">
+                            <img :src="fvo.poster">
                             <ul class="product__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -96,23 +96,21 @@
                     </div>
                 </div>
                 
-                
-                
             </div>
         </div>
      </section>
     </div>
-    <script src="/seouljs/seoulStore.js"></script>
+    <script src="/busanjs/busanStore.js"></script>
     <script>
      const detailApp=Vue.createApp({
     	 setup(){
-    		 const store=useSeoulStore()
+    		 const store=useBusanStore()
     		 const params=new URLSearchParams(location.search)
     		 const no=params.get('no')
     		 
     		 
     		 Vue.onMounted(()=>{
-    			 store.seoulDetailData(no,1)
+    			 store.busanDetailData(no)
     		 })
     		 
     		 return {
