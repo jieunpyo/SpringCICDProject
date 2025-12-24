@@ -8,7 +8,7 @@ import com.sist.web.vo.*;
 
 import lombok.RequiredArgsConstructor;
 @Service
-@RequiredArgsConstructor  // 생성자를 만들어서 @Autowired
+@RequiredArgsConstructor // 생성자를 만들어서 @Autowired 
 public class SeoulServiceImpl implements SeoulService{
    private final SeoulMapper mapper;
 
@@ -24,4 +24,12 @@ public class SeoulServiceImpl implements SeoulService{
 	return mapper.seoulTotalPage(map);
    }
 
+   @Override
+   public SeoulVO seoulDetailData(Map map) {
+	// TODO Auto-generated method stub
+	mapper.seoulHitIncrement(map);
+	return mapper.seoulDetailData(map);
+   }
+   
+   
 }

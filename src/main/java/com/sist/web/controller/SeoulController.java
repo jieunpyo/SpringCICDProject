@@ -21,7 +21,7 @@ public class SeoulController {
   };
   @GetMapping("/seoul")
   public String seoul_location(
-    @RequestParam(name="type",required = false) String type,Model model)
+	@RequestParam(name="type",required = false) String type,Model model) 
   {
 	  if(type==null)
 		  type="1";
@@ -29,6 +29,12 @@ public class SeoulController {
 	  model.addAttribute("title", title[i]);
 	  model.addAttribute("seoul_jsp", "../seoul/"+url[i]);
 	  model.addAttribute("main_jsp", "../seoul/seoul_main.jsp");
+	  return "main/main";
+  }
+  @GetMapping("/seoul/detail")
+  public String seoul_detail(Model model)
+  {
+	  model.addAttribute("main_jsp", "../seoul/detail.jsp");
 	  return "main/main";
   }
 }

@@ -7,9 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+                
                 <div class="col-lg-8 col-md-7" id="seoul_list">
                     <div class="row">
+                    
                         <div class="col-lg-6 col-md-6 col-sm-6" v-for="vo in store.list">
                             <div class="blog__item">
                                 <div class="blog__item__pic">
@@ -21,8 +22,8 @@
                                         <li><i class="fa fa-comment-o"></i> {{vo.hit}}</li>
                                     </ul>
                                     <h5><a href="#">{{vo.title}}</a></h5>
-                                    <p>{{vo.address}}</p>
-                                    <a href="#" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
+                                    <p>{{vo.address}} </p>
+                                    <a :href="'http://localhost:8080/seoul/detail?no='+vo.no+'&type='+store.type" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
                                 </div>
                             </div>
                         </div>
@@ -31,34 +32,32 @@
                         
                         
                         
-                        
                         <div class="col-lg-12">
                             <div class="product__pagination blog__pagination">
-                            	<a  v-if="store.startPage>1" @click="store.prev(store.startPage-1)"><i class="fa fa-long-arrow-left"></i></a>
+                                <a  v-if="store.startPage>1" @click="store.prev(store.startPage-1)"><i class="fa fa-long-arrow-left"></i></a>
                                 <a  v-for="i in store.range(store.startPage,store.endPage)" @click="store.pageChange(i)">{{i}}</a>
                                 <a  v-if="store.endPage<store.totalpage" @click="store.next(store.endPage+1)"><i class="fa fa-long-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
-           <script src="/seouljs/seoulStore.js"></script>
-		   <script>
-		    const app=Vue.createApp({
-		    	setup(){
-		    		const store=useSeoulStore()
-		    		// 한번 실행
-		    		Vue.onMounted(()=>{
-		    			store.seoulListData(1)
-		    		})
-		    		
-		    		return {
-		    			store
-		    		}
-		    	}
-		    })
-		    app.use(Pinia.createPinia())
-		    app.mount("#seoul_list")
-		   </script>
-
+          <script src="/seouljs/seoulStore.js"></script>
+          <script>
+           const app=Vue.createApp({
+        	   setup(){
+        		   const store=useSeoulStore()
+        		   // 한번 실행 
+        		   Vue.onMounted(()=>{
+        			   store.seoulListData(1)
+        		   })
+        		   
+        		   return {
+        			   store
+        		   }
+        	   }
+           })
+           app.use(Pinia.createPinia())
+           app.mount("#seoul_list")
+          </script>
 </body>
 </html>
