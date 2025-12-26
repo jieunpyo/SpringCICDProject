@@ -40,12 +40,12 @@
                 </tr>
                 <tr>
                  <th width=20% class="text-center success">제목</th>
-                 <td colspan="3" width=30% class="text-center">{{store.vo.subject}}</td>
+                 <td colspan="3" class="text-center">{{store.vo.subject}}</td>
                 </tr>
                 <tr>
                  <td colspan="4" class="text-left"
-                 	valign="top" height="200">
-                 	<pre style="white-space: pre-wrap;border: none;background-color: white;">{{store.vo.content}}</pre>
+                    valign="top" height="200">
+                    <pre style="white-space: pre-wrap;border: none;background-color: white">{{store.vo.content}}</pre>
                  </td>
                 </tr>
                 <tr>
@@ -58,31 +58,31 @@
               </tbody>
              </table>
             </div>
-        </div>
-    </section>
-    <script src="/boardjs/boardListStore.js"></script>
-    <script>
-      const {createApp,onMounted} = Vue
-      const {createPinia} = Pinia
-      const app=createApp({
-    	  setup(){
-    		  // 스토어 읽기
-    		  const store=useBoardListStore()
-    		  // 전송데이터 읽기
-    		  const params=new URLSearchParams(location.search)
-    		  const no=params.get('no')
-    		  // 함수 호출 
-    		  onMounted(()=>{
-    			  store.boardDetail(no)
-    		  })
-    		  // return 
-    		  return {
-    			  store
-    		  }
-    	  }
-      })
-      app.use(createPinia())
-      app.mount('#board_detail')
-    </script>
+         </div>
+     </section>
+     <script src="/boardjs/boardListStore.js"></script>
+     <script>
+       const {createApp,onMounted} = Vue
+       const {createPinia} = Pinia
+       const app=createApp({
+    	   setup(){
+    		   // 스토어 읽기 
+    		   const store=useBoardListStore()
+    		   // 전송데이터 읽기 
+    		   const params=new URLSearchParams(location.search)
+    		   const no=params.get('no')
+    		   // 함수 호출 
+    		   onMounted(()=>{
+    			   store.boardDetail(no)
+    		   })
+    		   // return  
+    		   return {
+    			   store
+    		   }
+    	   }
+       })
+       app.use(createPinia())
+       app.mount('#board_detail')
+     </script>
 </body>
 </html>

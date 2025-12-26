@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <section class="breadcrumb-section set-bg" data-setbg="../img/breadcrumb.jpg">
+ <section class="breadcrumb-section set-bg" data-setbg="../img/breadcrumb.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -28,8 +28,8 @@
                <tbody>
                 <tr>
                  <td class="text-center">
-                 비밀번호:<input type="password"ref="pwdRef" v-model="store.pwd" size="20"
-                 		class="input-sm">
+                 비밀번호:<input type="password" ref="pwdRef" v-model="store.pwd" size="20"
+                        class="input-sm">
                  </td>
                 </tr>
                 <tr>

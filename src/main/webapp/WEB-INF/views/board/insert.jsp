@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<section class="breadcrumb-section set-bg" data-setbg="../img/breadcrumb.jpg">
+  <section class="breadcrumb-section set-bg" data-setbg="../img/breadcrumb.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -47,7 +47,7 @@
                 <tr>
                   <td width=10% class="text-center">비밀번호</td>
                   <td width=90% class="text-left">
-                   <input type=password ref="pwdRef" v-model="store.pwd" size="10">
+                   <input type="password" ref="pwdRef" v-model="store.pwd" size="10">
                   </td>
                 </tr>
                 <tr>
@@ -58,6 +58,7 @@
                    <button class="btn-sm btn-info"
                     onclick="javascript:history.back()"
                    >취소</button>
+                  </td>
                 </tr>
                </tbody>
               </table>

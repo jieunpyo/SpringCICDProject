@@ -1,7 +1,7 @@
 const {defineStore} = Pinia
 const useBoardUpdateStore=defineStore('board_update',{
 	// 공통으로 사용하는 데이터 설정 => static 
-	// redux => state (store) = action dispatch() => reduce :vuex
+	// redux => state (store) = action dispatch() => reduce : vuex
 	// pinia = tanStack-Query 
 	// ----------------------- NodeJS / TypeScript
 	// 받는 변수 (JSP) , 서버에서 결과값
@@ -16,7 +16,7 @@ const useBoardUpdateStore=defineStore('board_update',{
 	}),
 	// 서버와 연동 
 	/*
-		RestFul
+	    RestFul 
 		
 		  SELECT : Get
 		  DELETE : Delete
@@ -28,16 +28,15 @@ const useBoardUpdateStore=defineStore('board_update',{
 		// insert => 유효성 검사 (NOT NULL = 반드시 입력이 되게 만든다)
 		// 비동기 처리 => async 
 		async boardUpdate({nameRef,subRef,contRef,pwdRef}){
-			this.no=no
 			if(this.name==='')
 			{
 				nameRef.focus()
-				return 
+				return
 			}
 			if(this.subject==='')
 			{
 				subRef.focus()
-				return 
+				return
 			}
 			if(this.content==='')
 			{
@@ -46,7 +45,7 @@ const useBoardUpdateStore=defineStore('board_update',{
 			if(this.pwd==='')
 			{
 				pwdRef.focus()
-				return 
+				return
 			}
 			// => JSP
 			const res=await axios.put('http://localhost:8080/board/update_ok_vue/',{
@@ -67,16 +66,16 @@ const useBoardUpdateStore=defineStore('board_update',{
 				this.pwd=''
 				pwdRef.focus()
 			}
-			
+						
 		},
 		// detail 
 		async boardUpdateData(no){
-			this.no=no
-			const res=await axios.get('http://localhost:8080/board/update_vue/',{
-				params:{
-					no:no
-				}
-			})
+			 this.no=no
+			 const res=await axios.get('http://localhost:8080/board/update_vue/',{
+				   params:{
+							no:no
+						  }
+			 })
 			this.vo=res.data
 			this.name=res.data.name
 			this.subject=res.data.subject

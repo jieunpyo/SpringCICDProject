@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<section class="breadcrumb-section set-bg" data-setbg="../img/breadcrumb.jpg">
+ <section class="breadcrumb-section set-bg" data-setbg="../img/breadcrumb.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -69,18 +69,17 @@
      const {createPinia} = Pinia
      
      const app=createApp({
-    	setup()
-    	{
-    		const store=useBoardListStore()
-       	 	onMounted(()=>{
-       		store.dataRecv()
-       	})
-       	 
-       	return {
-       		 store
-       	   }
+    	setup(){
+    		 const store=useBoardListStore()
+        	 onMounted(()=>{
+        		 store.dataRecv()
+        	 })
+        	 
+        	 return {
+        		 store
+        	 }
     	}
-    	 
+    	
      })
      // Pinia객체 생성 
      const pinia=createPinia()
