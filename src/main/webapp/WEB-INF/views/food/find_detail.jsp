@@ -116,7 +116,6 @@
     			 store.foodDetailData(fno)
     			 //  데이터 변경 감지 
     			 //  완성된 데이터 : computed()
-    			 if(!store.address) return
     			 if(window.kakao && window.kakao.maps)
     			 {
     				 initMap()
@@ -141,7 +140,7 @@
     			 var geocoder = new kakao.maps.services.Geocoder();
 
     			 // 주소로 좌표를 검색합니다
-    			 geocoder.addressSearch(store.address, function(result, status) {
+    			 geocoder.addressSearch(store.food_detail.address, function(result, status) {
 
     			     // 정상적으로 검색이 완료됐으면 
     			      if (status === kakao.maps.services.Status.OK) {
