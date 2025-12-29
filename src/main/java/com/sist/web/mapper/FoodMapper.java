@@ -37,13 +37,13 @@ public interface FoodMapper {
 	@Select("SELECT fno,name,poster "
 		   +"FROM (SELECT fno,name,poster "
 		   +"FROM menupan_food "
-		   +"WHERE address LIKE '%'||#{adress}||'%' "
+		   +"WHERE address LIKE '%'||#{address}||'%' "
 		   +"ORDER BY fno ASC) "
 		   +"OFFSET #{start} ROWS FETCH NEXT 12 ROWS ONLY")
 	public List<FoodVO> foodFindData(
 			@Param("start") int start,@Param("address") String address );
 	@Select("SELECT CEIL(COUNT(*)/12.0) FROM menupan_food "
-			+"WHERE address LIKE '%'||#{adress}||'%'")
+			+"WHERE address LIKE '%'||#{address}||'%'")
 	public int foodFindTotalpage(String address);
 	
 	// 상세보기 
@@ -53,7 +53,7 @@ public interface FoodMapper {
 	public void foodHitIncrement(int fno);
 	
 	@Select("SELECT fno,name,poster,address,phone,type,"
-		   +"time,parking,score,theme, content "
+		   +"time,parking,score,theme, content, price "
 		   +"FROM menupan_food "
 		   +"WHERE fno=#{fno}")
 	public FoodVO foodDetailData(int fno);
