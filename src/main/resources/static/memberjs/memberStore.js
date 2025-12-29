@@ -5,7 +5,8 @@ const useMemberStore=defineStore('member',{
 		id:'',
 		name:'',
 		pwd:'',
-		isLogin:false
+		isLogin:false,
+		sessionId:''
 	}),
 	actions:{
 		async login(idRef,pwdRef){

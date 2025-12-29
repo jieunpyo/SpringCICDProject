@@ -16,7 +16,11 @@ const useFoodStore=defineStore('food',{
 		totalpage:0,
 		startPage:0,
 		endPage:0,
-		food_detail:{}
+		food_detail:{},
+		reply:[],
+		type:1,
+		cno:0,
+		msg:''
 	}),
 	// VM => 데이터 요청 처리 
 	actions:{
@@ -75,6 +79,18 @@ const useFoodStore=defineStore('food',{
 				start++
 			}
 			return arr
+		},
+		// 댓글 
+		async foodReplyData(cno){
+			const res=await axios.get('http://localhost:8080/reply/list_vue/',{
+				params:{
+					cno:cno,
+					type:this.type
+				}
+			})
+			console.log(res.data)
+			this.reply=res.data.rList
+			this.cno=res.data.cno
 		}
 	}
 })
