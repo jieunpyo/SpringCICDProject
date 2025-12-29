@@ -106,7 +106,10 @@
         	        <table class="table" v-for="rvo in store.reply">
         	         <tr>
         	          <td class="text-left">◑{{rvo.name}} ({{rvo.dbday}})</td>
-        	          <td class="text-right"></td>
+        	          <td class="text-right">
+        	           <a href="#" class="btn btn-xs btn-info" v-if="store.sessionId===rvo.id">수정</a>
+        	           <a href="#" class="btn btn-xs btn-success" v-if="store.sessionId===rvo.id">삭제</a>
+        	          </td>
         	         </tr>
         	         <tr>
         	          <td colspan="2">
@@ -121,8 +124,8 @@
         	  <table class="table">
         	    <tr>
         	      <td class="text-center">
-        	       <textarea rows="4" cols="60" style="float: left;"></textarea>
-        	       <button class="btn-success" style="width: 80px;height: 100px;float: left;">댓글쓰기</button>
+        	       <textarea rows="4" cols="60" style="float: left;" ref="msgRef" v-model="store.msg"></textarea>
+        	       <button class="btn-success" style="width: 80px;height: 100px;float: left;" @click="store.foodReplyInsert(fno,msgRef)">댓글쓰기</button>
         	      </td>
         	    </tr>
         	  </table>
@@ -133,7 +136,7 @@
     </section>
     <script src="/foodjs/foodStore.js"></script>
     <script>
-     const {createApp,onMounted} = Vue
+     const {createApp,onMounted,ref} = Vue
      const {createPinia} = Pinia
      const app=createApp({
     	 setup(){
@@ -141,7 +144,7 @@
     		 const store=useFoodStore()
     		 const params=new URLSearchParams(location.search)
     		 const fno=params.get('fno')
-    		 
+    		 const msgRef=ref(null)
     		 
     		 onMounted(()=>{
     			 store.foodDetailData(fno)
@@ -205,7 +208,9 @@
     		 }
     		 
 			 return {
-    			 store
+    			 store,
+    			 msgRef,
+    			 fno
     		 }
     	 }
 

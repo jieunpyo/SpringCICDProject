@@ -20,7 +20,8 @@ const useFoodStore=defineStore('food',{
 		reply:[],
 		type:1,
 		cno:0,
-		msg:''
+		msg:'',
+		sessionId:''
 	}),
 	// VM => 데이터 요청 처리 
 	actions:{
@@ -32,6 +33,7 @@ const useFoodStore=defineStore('food',{
 		   })
 		   console.log(res.data)
 		   this.food_detail=res.data
+		   
 		},
 		// 비동기적 처리 
 		async dataRecv(){
@@ -91,6 +93,25 @@ const useFoodStore=defineStore('food',{
 			console.log(res.data)
 			this.reply=res.data.rList
 			this.cno=res.data.cno
+			this.sessionId=res.data.sessionId
+		},
+		async foodReplyInsert(cno,msgRef){
+			if(this.msg==='')
+			{
+				msgRef?.focus() // react 
+				return 
+			}
+			const res=await axios.post('http://localhost:8080/reply/insert_vue/',{
+				cno:cno,
+				type:this.type,
+				msg:this.msg
+			})
+			console.log(res.data)
+			this.reply=res.data.rList
+			this.cno=res.data.cno
+			this.sessionId=res.data.sessionId
+			this.msg=''
+			msgRef?.focus()
 		}
 	}
 })

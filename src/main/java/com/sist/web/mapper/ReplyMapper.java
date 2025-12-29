@@ -1,6 +1,7 @@
 package com.sist.web.mapper;
 import java.util.*;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -16,4 +17,8 @@ public interface ReplyMapper {
 		 +"ORDER BY no DESC")
   public List<ReplyVO> replyListData(@Param("cno") Integer cno,
 		  @Param("type") Integer type);
+  @Insert("INSERT INTO comment_1 VALUES("
+		 +"(SELECT NVL(MAX(no)+1,1) FROM comment_1),"
+		 +"#{cno},#{type},#{id},#{name},#{msg},SYSDATE)")
+  public void replyInsert(ReplyVO vo);
 }

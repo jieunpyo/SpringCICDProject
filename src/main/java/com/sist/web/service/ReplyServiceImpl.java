@@ -17,4 +17,10 @@ public class ReplyServiceImpl implements ReplyService{
 	// TODO Auto-generated method stub
 	return mapper.replyListData(cno,type);
    }
+
+   @Override
+   public void replyInsert(ReplyVO vo) {
+	// TODO Auto-generated method stub
+	 mapper.replyInsert(vo);
+   }
 }
