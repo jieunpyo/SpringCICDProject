@@ -22,7 +22,7 @@ public interface BoardMapper {
    public List<BoardVO> boardListData(int start);
    
    @Select("SELECT CEIL(COUNT(*)/10.0) FROM board_1")
-   public int boardTotalpage();
+   public int boardTotalPage();
    // 데이터 추가 
    @SelectKey(keyProperty = "no",resultType = int.class,
 		   before = true,
@@ -31,7 +31,7 @@ public interface BoardMapper {
 		  +"#{no},#{name},#{subject},#{content},#{pwd},"
 		  +"SYSDATE,0)")
    public void boardInsert(BoardVO vo);
-   // 데이터 상세보기
+   // 데이터 상세보기 
    @Update("UPDATE board_1 SET "
 		  +"hit=hit+1 "
 		  +"WHERE no=#{no}")

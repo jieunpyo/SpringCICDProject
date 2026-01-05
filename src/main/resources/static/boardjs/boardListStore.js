@@ -7,9 +7,9 @@ const useBoardListStore=defineStore('board_list',{
 		totalpage:0,
 		vo:{}
 	}),
-	// 기능 설정 => methods 
+	// 기능 설정 => methods  
 	actions:{
-		// default 매개변수 
+		//default 매개변수 
 		async dataRecv(){
 			const res = await axios.get('http://localhost:8080/board/list_vue/',{
 				params:{

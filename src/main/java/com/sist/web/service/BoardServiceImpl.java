@@ -33,9 +33,9 @@ public class BoardServiceImpl implements BoardService{
    }
 
    @Override
-   public int boardTotalpage() {
+   public int boardTotalPage() {
 	// TODO Auto-generated method stub
-	return mapper.boardTotalpage();
+	return mapper.boardTotalPage();
    }
 
    @Override
@@ -69,5 +69,4 @@ public class BoardServiceImpl implements BoardService{
 	// TODO Auto-generated method stub
 	return mapper.boardDetailData(no);
    }
-
 }
